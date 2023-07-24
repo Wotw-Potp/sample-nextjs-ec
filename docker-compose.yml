@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  nextjs-node:
+    container_name: nextjs-node__container
+    image: node:lts-slim
+    volumes:
+      - type: bind
+        source: "./project"
+        target: "/var/www/project"
+    working_dir: "/var/www/project"
+    tty: true
+    ports:
+      - "3000:3000"
