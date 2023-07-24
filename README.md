@@ -19,10 +19,10 @@
 
    2. `Stripe`の **API Key**を `.env.local`に設定
 
-     |変数名|説明|
-     |:--|:--|
-     |STRIPE_API_KEY_PUBLIC|`公開可能キー`(pk_xxx)|
-     |STRIPE_API_KEY_SECRET|`シークレットキー`(sk_xxx) or `制限付きのキー`(rk_xxx)|
+      |変数名|説明|
+      |:--|:--|
+      |STRIPE_API_KEY_PUBLIC|`公開可能キー`(pk_xxx)|
+      |STRIPE_API_KEY_SECRET|`シークレットキー`(sk_xxx) or `制限付きのキー`(rk_xxx)|
 
 3. **Docker** 起動 & **Next.js** 開発サーバー起動
    - Docker起動
