@@ -1,6 +1,6 @@
 import type { TProduct } from "@/@types/product"
-
-const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? ''
+import { getProduct } from "@/services/api/product"
+import FormattedPrice from "@/components/elements/typography/FormattedPrice"
 
 interface PageProps {
   params: {
@@ -19,7 +19,9 @@ export default async function Product({ params }: PageProps) {
           <article className="py-8">
             <div className="flex gap-8 mb-10">
               <div className="grow">
-                <div className="p-4 bg-white rounded font-bold mb-4">{`¥ ${product.default_price.unit_amount.toLocaleString()}`}</div>
+                <div className="p-4 bg-white rounded font-bold mb-4">
+                  <FormattedPrice value={product.default_price.unit_amount} />
+                </div>
                 <h2 className="text-3xl font-bold pb-2 border-b border-slate-200 mb-4">{product.name}</h2>
                 <p className="leading-relaxed">{product.description}</p>
               </div>
@@ -40,7 +42,7 @@ export default async function Product({ params }: PageProps) {
                   type="submit"
                   className="inline-flex justify-center items-baseline gap-4 px-8 py-4 rounded-md bg-blue-600 text-white font-bold min-w-[20ch] hover:bg-opacity-80">
                   <span>購入する</span>
-                  <span className="text-xl">{`¥ ${product.default_price.unit_amount.toLocaleString()}`}</span>
+                  <span className="text-xl"><FormattedPrice value={product.default_price.unit_amount} /></span>
                 </button>
               </form>
             </div>
@@ -49,8 +51,4 @@ export default async function Product({ params }: PageProps) {
       </section>
     </main>
   )
-}
-
-async function getProduct(id: string): Promise<TProduct> {
-  return await fetch(`${appUrl}/api/products/${id}`).then((res) => res.json())
 }

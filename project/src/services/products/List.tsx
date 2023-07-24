@@ -1,11 +1,6 @@
-import type { TProduct } from "@/@types/product"
 import LinkCard from "@/components/elements/card/LinkCard"
-
-const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? ''
-
-async function getProducts(): Promise<TProduct[]> {
-  return await fetch(`${appUrl}/api/products`).then((res) => res.json())
-}
+import { getProducts } from "../api/product"
+import FormattedPrice from "@/components/elements/typography/FormattedPrice"
 
 export default async function ProductList() {
   const products = await getProducts()
@@ -22,7 +17,7 @@ export default async function ProductList() {
             url={`/products/${product.id}`}
           >
             <p className="text-sm text-slate-600 text-right">
-              {`¥ ${product.default_price.unit_amount.toLocaleString()}`}
+              <FormattedPrice value={product.default_price.unit_amount} />
             </p>
           </LinkCard>
         </li>
