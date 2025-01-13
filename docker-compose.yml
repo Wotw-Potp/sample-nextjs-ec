@@ -1,9 +1,7 @@
-version: "3"
-
 services:
   nextjs-node:
     container_name: nextjs-node__container
-    image: node:lts-slim
+    image: node:22
     volumes:
       - type: bind
         source: "./project"
