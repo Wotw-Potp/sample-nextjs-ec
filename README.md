@@ -37,5 +37,5 @@
 
    - **Node.js** コンテナ内で依存パッケージのインストール & 開発サーバー起動
       ```sh
-      # /var/www/project yarn && yarn dev
+      # /var/www/project npm i && npm run dev
       ```
